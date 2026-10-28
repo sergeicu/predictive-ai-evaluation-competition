@@ -1,0 +1,8 @@
+.venv/
+data/
+__pycache__/
+.autolab/.gitignore
+.autolab/hills/*/.vc/
+.autolab/hills/*/.venv/
+.autolab/hills/*/private/
+.autolab/hills/*/.pytest_cache/
