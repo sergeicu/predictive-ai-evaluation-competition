@@ -1,0 +1,13 @@
+M3_s3c_om4_s1.5 validation 0,1,2
+M3_s3c_om4_s1.5 validation 0,1,2 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s3c_om5_s1.5 validation 0,1,2
+M3_s3c_om5_s1.5 validation 0,1,2 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s3c_om4_s2.5 validation 0,1,2
+M3_s3c_om4_s2.5 validation 0,1,2 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s3c_om5_s2.5 validation 0,1,2
+M3_s3c_om5_s2.5 validation 0,1,2 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s3c_om4_s1.0_t0.9 validation 0,1,2
+M3_s3c_om4_s1.0_t0.9 validation 0,1,2 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s3c_om4_s1.0_t1.1 validation 0,1,2
+M3_s3c_om4_s1.0_t1.1 validation 0,1,2 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s3_om4_s1.0 final 0,1,2
