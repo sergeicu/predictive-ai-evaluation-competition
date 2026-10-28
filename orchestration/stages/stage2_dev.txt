@@ -1,0 +1,11 @@
+# stage 2 dev holdout (never in any fit): 10 benchmarks across agentic, coding, knowledge, math, law, medicine, vision
+taubench
+mmlupro
+statqa
+planbench
+legalbench
+swebench_live
+kernelbench
+hle
+ai2d_test
+afrimedqa

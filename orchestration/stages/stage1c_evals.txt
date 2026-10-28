@@ -1,0 +1,30 @@
+M2_s1c_a0_sig1 validation 0,1,2
+M2_s1c_a0_sig1 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0_sig2 validation 0,1,2
+M2_s1c_a0_sig2 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0_sig4 validation 0,1,2
+M2_s1c_a0_sig4 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0.25_sig1 validation 0,1,2
+M2_s1c_a0.25_sig1 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0.25_sig2 validation 0,1,2
+M2_s1c_a0.25_sig2 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0.25_sig4 validation 0,1,2
+M2_s1c_a0.25_sig4 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0.5_sig1 validation 0,1,2
+M2_s1c_a0.5_sig1 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0.5_sig2 validation 0,1,2
+M2_s1c_a0.5_sig2 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0.5_sig4 validation 0,1,2
+M2_s1c_a0.5_sig4 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0_sig2_tau2 validation 0,1,2
+M2_s1c_a0_sig2_tau2 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M2_s1c_a0_sig2_b0half validation 0,1,2
+M2_s1c_a0_sig2_b0half validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M3_s1c_a0_sig2_om0.5 validation 0,1,2
+M3_s1c_a0_sig2_om0.5 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M3_s1c_a0_sig2_om1 validation 0,1,2
+M3_s1c_a0_sig2_om1 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M3_s1c_a0_sig2_om2 validation 0,1,2
+M3_s1c_a0_sig2_om2 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1
+M0_pooled_beta validation 0,1,2
+M0_pooled_beta validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage1/dev/holdout.parquet --tag dev1

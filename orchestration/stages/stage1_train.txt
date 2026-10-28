@@ -1,0 +1,21 @@
+# stage 1 training pool: ~20 small benchmarks with many subjects (responses + subjects tables only)
+chi_bench
+benger
+crow
+harmbench
+cruxeval
+cmmlu
+agi_elo
+devbench
+auditing_sabotage_bench
+aider
+finegrain_t2i
+engdesign
+fewshot_ttt_bbh
+emoji_attack
+haiid
+dbpa
+dave
+healthadminbench
+edu_circuit_hw
+clasheval
