@@ -1,0 +1,11 @@
+[project]
+name = "neurips-predictive-evals-comp"
+version = "0.1.0"
+description = "Evaluation environment for the NeurIPS 2026 Predictive AI Evaluation Competition (Brier ALC on held-out benchmarks)"
+requires-python = ">=3.11"
+dependencies = [
+    "pyarrow>=15",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "pandas>=2.0", "huggingface_hub>=0.25"]

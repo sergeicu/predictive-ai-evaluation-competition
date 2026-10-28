@@ -1,0 +1,24 @@
+spec_version: 2
+name: neurips-predictive-evals-comp
+version: 0.1.0
+
+# What the evaluator reports, in ranking order: every passing report must start
+# with exactly these, and ranking is lexicographic in this order.
+metrics:
+  - {name: brier_alc, direction: min}
+
+# Hard kill for a hung evaluator. The evaluator enforces its own time budget
+# (param time_budget_s) and fails the report before this fires.
+watchdog_timeout_s: 3600
+
+# Typed knobs the tool validates and passes to eval() as keyword arguments.
+params:
+  seed: {type: int, default: 0, min: 0}
+  max_eval_items: {type: int, default: 100, min: 10, max: 1000}
+  max_pairs_per_benchmark: {type: int, default: 12, min: 1, max: 200}
+  time_budget_s: {type: int, default: 3000, min: 60, max: 3500}
+
+# Large assets stay out of git and are bound into the hill's identity by hash.
+blobs:
+  threshold: 10MB
+  track: ["private/**"]

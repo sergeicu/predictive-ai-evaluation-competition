@@ -1,0 +1,21 @@
+{
+  "lock_version": 1,
+  "kind": "private",
+  "entries": [
+    {
+      "path": "private/benchmark_map.json",
+      "sha256": "a23f727fe7fd757846982c30204ec4b885908f15353075298f57fd5b780f812b",
+      "size": 606
+    },
+    {
+      "path": "private/holdout.parquet",
+      "sha256": "27aac07ade8ef93df989b4c278de3427b292d7a3ded8c00188d6409761c57d6a",
+      "size": 22666619
+    },
+    {
+      "path": "private/salt.txt",
+      "sha256": "8e8b5e8d7328c4bde281c7d2e646ce7d3785378f748b92bf6fc6ecd88b816027",
+      "size": 33
+    }
+  ]
+}

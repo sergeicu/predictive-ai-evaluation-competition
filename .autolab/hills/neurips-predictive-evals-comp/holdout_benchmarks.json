@@ -1,0 +1,85 @@
+[
+ {
+  "benchmark": "editbench",
+  "split": "validation",
+  "n_subjects": 40,
+  "n_items": 400,
+  "n_responses": 16000,
+  "domain": [
+   "software_engineering",
+   "multilingual"
+  ]
+ },
+ {
+  "benchmark": "algotune",
+  "split": "final",
+  "n_subjects": 18,
+  "n_items": 154,
+  "n_responses": 2772,
+  "domain": [
+   "software_engineering",
+   "reasoning"
+  ]
+ },
+ {
+  "benchmark": "appworld",
+  "split": "validation",
+  "n_subjects": 18,
+  "n_items": 400,
+  "n_responses": 7200,
+  "domain": [
+   "agents_and_tool_use"
+  ]
+ },
+ {
+  "benchmark": "brace",
+  "split": "final",
+  "n_subjects": 28,
+  "n_items": 400,
+  "n_responses": 6400,
+  "domain": [
+   "general"
+  ]
+ },
+ {
+  "benchmark": "hallusionbench",
+  "split": "validation",
+  "n_subjects": 40,
+  "n_items": 400,
+  "n_responses": 15997,
+  "domain": [
+   "reasoning"
+  ]
+ },
+ {
+  "benchmark": "bird_sql",
+  "split": "final",
+  "n_subjects": 40,
+  "n_items": 360,
+  "n_responses": 14400,
+  "domain": [
+   "software_engineering"
+  ]
+ },
+ {
+  "benchmark": "financebench",
+  "split": "validation",
+  "n_subjects": 16,
+  "n_items": 150,
+  "n_responses": 2400,
+  "domain": [
+   "finance"
+  ]
+ },
+ {
+  "benchmark": "elicitation_game",
+  "split": "final",
+  "n_subjects": 7,
+  "n_items": 357,
+  "n_responses": 1617,
+  "domain": [
+   "safety",
+   "knowledge"
+  ]
+ }
+]
