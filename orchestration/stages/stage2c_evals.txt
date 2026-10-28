@@ -1,0 +1,21 @@
+M2_s2c_a0_recent validation 0,1,2
+M2_s2c_a0_recent validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M2_s2c_a0.5_recent validation 0,1,2
+M2_s2c_a0.5_recent validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M2_s2c_a0_s0.3 validation 0,1,2
+M2_s2c_a0_s0.3 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M2_s2c_a0_s0.6 validation 0,1,2
+M2_s2c_a0_s0.6 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M2_s2c_a0_s1.0 validation 0,1,2
+M2_s2c_a0_s1.0 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M2_s2c_a0.25_s0.6 validation 0,1,2
+M2_s2c_a0.25_s0.6 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M2_s2c_a0_s0.6_b0half validation 0,1,2
+M2_s2c_a0_s0.6_b0half validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s2c_a0_s0.6_om0.5 validation 0,1,2
+M3_s2c_a0_s0.6_om0.5 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s2c_a0_s0.6_om1 validation 0,1,2
+M3_s2c_a0_s0.6_om1 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M3_s2c_a0_s0.6_om2 validation 0,1,2
+M3_s2c_a0_s0.6_om2 validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2
+M0_pooled_beta validation 0 --holdout /scratch/serge_ad_aihub/paiec/stage2/dev/holdout.parquet --tag dev2

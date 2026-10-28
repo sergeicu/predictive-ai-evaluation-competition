@@ -77,3 +77,22 @@ flag, not a new file. Hyperparameters are swept as Slurm array jobs on the dev s
 - Fit: one task per model variant x hyperparameter setting (array).
 - Eval: one task per submission x split x seed; each is seconds to a minute.
 - Login node runs only `sbatch`, `squeue`, rsync and tiny file reads.
+
+## Findings log (2026-10-28)
+
+Hill validation, mean Brier ALC over seeds 0 to 2; pooled Beta baseline = 0.2225, constant 0.5 = 0.25.
+
+| rung | best variant | hill validation | notes |
+|------|--------------|-----------------|-------|
+| M0 | pooled Beta | 0.2225 | reference |
+| M1 | subject prior at B0 + pooled Beta | 0.2241 | B0 gets *worse* than 0.5: public-benchmark ability does not place a model on an unseen benchmark |
+| M2 | hierarchical logit, a_mult 0, sigma2 about 0.6 to 0.75 | 0.2195 | gain is all at budgets 1 to 7; the fitted pair variance (0.37 on 20 benchmarks, 2.3 on 111) is the wrong quantity, tune it on dev |
+| M3 | M2 + item difficulty from other subjects' labels on the same item, omega_mult 3 to 6 | 0.2146 | biggest single lever; B31 drops from 0.203 to 0.187; also best on both dev holdouts |
+| M4 | M3 + coordinated acquisition | 0.2149 | helps B1/B3, hurts B15/B31; hybrid rule (coordinate first k labels) under test |
+| final split (touched once) | M3 0.1591, M2 0.1599, M0 0.1633 | | gains carry over |
+
+Dead ends, each closed by one cheap experiment:
+- Subject-ability transfer (a_mult > 0): within-benchmark correlation of fitted ability with held-out accuracy is only about 0.3 (slope 0.5); any a_mult > 0 is neutral to harmful.
+- More training data: 111 benchmarks (12.6M responses) vs 20 small ones gives the same score; the training set matters for hyperparameters, not for the predictions.
+- Text features of items (length, code/math markers, MC format, ...): pooled within-benchmark CV R² = 0.018 over 22 benchmarks / 178k items, signs flip across benchmarks; benchmark-level aggregates do not predict benchmark difficulty either. Not worth the 3 GB items corpus.
+- Estimating sigma2 on recent subjects only: comes out even larger (6); the hill's subject pool behaves far more homogeneously than the public tables suggest.

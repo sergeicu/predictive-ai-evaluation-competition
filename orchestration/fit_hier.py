@@ -76,12 +76,17 @@ def main() -> int:
     ap.add_argument("--mode", default="M2", choices=["M1", "M2", "M3"])
     ap.add_argument("--omega2", type=float, default=0.0, help="item-difficulty variance (logit^2) for M3; see fit_items.py")
     ap.add_argument("--omega-mult", type=float, default=1.0)
+    ap.add_argument("--acq-coord-until", type=int, default=7, help="labeling.py: coordinate the first N labels, then random")
+    ap.add_argument("--acq-c", type=float, default=1.5)
+    ap.add_argument("--with-labeling", action="store_true", help="also ship models/hier/labeling.py (coordinated acquisition)")
     ap.add_argument("--b0-half", action="store_true", help="predict exactly 0.5 when no label on the benchmark exists")
     ap.add_argument("--exclude", default="")
     ap.add_argument("--min-n", type=int, default=5)
     ap.add_argument("--ridge-a", type=float, default=1.0)
     ap.add_argument("--ridge-d", type=float, default=1.0)
     ap.add_argument("--sigma-mult", type=float, default=1.0)
+    ap.add_argument("--sigma2-abs", type=float, default=None, help="override the fitted sigma2 with this value")
+    ap.add_argument("--recent-since", default=None, help="estimate sigma2 only on subjects released on/after this date (YYYY-MM-DD)")
     ap.add_argument("--tau-mult", type=float, default=1.0)
     ap.add_argument("--temp", type=float, default=1.0)
     ap.add_argument("--a-mult", type=float, default=1.0, help="transfer coefficient on subject ability (0 = ignore subjects)")
@@ -93,6 +98,22 @@ def main() -> int:
     df = df[~df["benchmark"].isin(excl) & (df["n"] >= a.min_n)].copy()
     df["skey"] = df.apply(skey, axis=1)
     s_keys, ab, v_a, b_keys, d, sigma2, diag = fit(df, a.ridge_a, a.ridge_d, a_mult=a.a_mult)
+    if a.recent_since:
+        rd = pd.to_datetime(df["release_date"], errors="coerce")
+        recent = (rd >= pd.Timestamp(a.recent_since)).to_numpy()
+        kk, nn = df["k"].to_numpy(float), df["n"].to_numpy(float)
+        s_idx = pd.Index(s_keys).get_indexer(df["skey"]); b_idx = pd.Index(b_keys).get_indexer(df["benchmark"])
+        m = recent & (nn >= 20)
+        emp = np.log((kk[m] + 0.5) / (nn[m] - kk[m] + 0.5))
+        a_eff = ab.mean() + a.a_mult * (ab - ab.mean())
+        r = emp - (a_eff[s_idx[m]] + d[b_idx[m]]); r = r - r.mean()
+        pr = 1 / (1 + np.exp(-(ab[s_idx[m]] + d[b_idx[m]])))
+        noise = float(np.mean(1.0 / (nn[m] * pr * (1 - pr))))
+        diag.update(recent_pairs=int(m.sum()), recent_resid_var=float(np.var(r)), sigma2_all=sigma2)
+        sigma2 = float(max(np.var(r) - noise, 0.05))
+    if a.sigma2_abs is not None:
+        diag["sigma2_fitted"] = sigma2
+        sigma2 = a.sigma2_abs
 
     subjects = {str(kk): [float(x), float(v)] for kk, x, v in zip(s_keys, ab, v_a)}
     # fallbacks: name, provider|year, provider, global (mean and between-subject variance)
@@ -121,6 +142,8 @@ def main() -> int:
         "omega2": a.omega2,
         "omega_mult": a.omega_mult,
         "b0_half": bool(a.b0_half),
+        "acq_coord_until": a.acq_coord_until,
+        "acq_c": a.acq_c,
         "mean_a": float(np.mean(ab)),
         "mu_d": float(np.mean(d)),
         "tau_d2": float(max(np.var(d), 0.05)),
@@ -139,6 +162,10 @@ def main() -> int:
     out = Path(a.out_root) / a.name
     out.mkdir(parents=True, exist_ok=True)
     shutil.copy(TEMPLATE, out / "model.py")
+    if a.with_labeling:
+        shutil.copy(TEMPLATE.parent / "labeling.py", out / "labeling.py")
+    elif (out / "labeling.py").exists():
+        (out / "labeling.py").unlink()
     (out / "params.json").write_text(json.dumps(params))
     print(
         f"{a.name}: pairs={len(df)} benchmarks={len(b_keys)} subjects={len(s_keys)} "
